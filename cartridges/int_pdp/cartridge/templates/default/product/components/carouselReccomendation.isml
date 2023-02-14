@@ -1,0 +1,27 @@
+<div class="container text-center my-3">
+    <div class="row mx-auto my-auto">
+        <div id="recommendationCarousel" class="carousel slide w-100">
+            <h2 class="font-weight-light">${Resource.msg('carousel.message', 'product', null)}</h2>
+            <div class="carousel-inner w-100 d-flex align-self-stretch" role="listbox">
+                <isloop items="${product.recommendations}" var="reccomendation" status="counter">
+                    <div class="carousel-item <isif condition=${counter.count === 1}>active</isif>">
+                        <div class="col-md-4">
+                            <div class="card card-body border-0">
+                                <isinclude
+                                    url="${URLUtils.url('Tile-Show', 'pid', reccomendation.recommendedItem.ID, 'swatches', false)}" />
+                            </div>
+                        </div>
+                    </div>
+                </isloop>
+            </div>
+            <a class="arrow-prev carousel-control-prev w-auto" href="#recommendationCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">${Resource.msg('carousel.previous', 'product', null)}</span>
+            </a>
+            <a class="arrow-next carousel-control-next w-auto" href="#recommendationCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">${Resource.msg('carousel.next', 'product', null)}</span>
+            </a>
+        </div>
+    </div>
+</div>

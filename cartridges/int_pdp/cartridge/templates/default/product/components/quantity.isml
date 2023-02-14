@@ -1,0 +1,16 @@
+<label for="quantity-${loopState && loopState.count ? loopState.count : '1'}">${Resource.msg('label.quantity', 'common', null)}</label>
+<div class="d-flex">
+<button id="value-back" class="btn border-secondary rounded-circle"><i class="fa fa-minus text-secondary"
+        aria-hidden="true"></i></button>
+<select id="custom-quantity-select" class="count-select quantity-select bg-transparent border-0 text-center overflow-hidden">
+    <isloop items="${product.quantities}" var="quantity">
+        <option class="bg-transparent" value="${quantity.value}" <isif condition="${product.productType !== 'bundle'}">
+            data-url="${quantity.url}"</isif>
+            ${quantity.selected ? 'selected' : ''}>
+            ${quantity.value}
+        </option>
+    </isloop>
+</select>
+<button id="value-next" class="btn border-secondary rounded-circle"><i class="fa fa-plus text-secondary"
+        aria-hidden="true"></i></button>
+</div>

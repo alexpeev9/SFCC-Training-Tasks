@@ -1,0 +1,19 @@
+<div class="row hidden-xs-down">
+    <div class="col" role="navigation" aria-label="Breadcrumb">
+        <ol class="breadcrumb border-top-0">
+            <isloop items="${pdict.breadcrumbs}" var="breadcrumbValue" status="loopState">
+                <li class="breadcrumb-item">
+                    <isif condition="${loopState.last}">
+                        <a href="${breadcrumbValue.url}" aria-current="page" class="text-secondary" >
+                            ${breadcrumbValue.htmlValue}
+                        </a>
+                    <iselse>
+                        <a href="${breadcrumbValue.url}" class="text-secondary" >
+                            ${breadcrumbValue.htmlValue}
+                        </a>
+                    </isif>
+                </li>
+            </isloop>
+        </ol>
+    </div>
+</div>

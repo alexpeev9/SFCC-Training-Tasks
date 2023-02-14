@@ -1,0 +1,25 @@
+<div id="detailsInfo" class="row pt-2">
+    <div class="col-md-3 col-12 d-flex flex-column" id="collapse-buttons">
+        <button id="info-btn" class="dropdown btn d-flex align-items-center mb-1 shadow-none" aria-expanded="true" data-toggle="collapse" data-target="#details">
+            <i class="collapse-first fa fa-plus" aria-hidden="true"></i>
+            <i class="collapse-second fa fa-minus" aria-hidden="true"></i>
+            <span class="info-text pl-2">${Resource.msg('info.description', 'product', null)}</span>
+        </button>
+        <button id="info-btn" class="dropdown btn d-flex align-items-center shadow-none" aria-expanded="false" data-toggle="collapse" data-target="#delivery">
+            <i class="collapse-first fa fa-plus" aria-hidden="true"></i>
+            <i class="collapse-second fa fa-minus" aria-hidden="true"></i>
+            <span class="info-text pl-2">${Resource.msg('info.delivery', 'product', null)}</span>
+        </button>
+    </div>
+    <div class="col-md-9 col-12">
+        <div class="accordion-group">
+            <div class="collapse show" id="details" data-parent="#detailsInfo">
+                <isprint value="${product.longDescription}" encoding="off" />
+            </div>
+
+            <div class="collapse" id="delivery" data-parent="#detailsInfo">
+                <isprint value="${pdict.deliveryInfo}" encoding="off" />
+            </div>
+        </div>
+    </div>
+</div>

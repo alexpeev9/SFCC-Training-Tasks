@@ -1,0 +1,119 @@
+// Small detail images
+
+.small-image-wrapper {
+  width: 5rem;
+}
+
+// Select option buttons
+
+.select-buttons {
+  max-height: 15rem;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  & option {
+    background-color: var(--color-grey2);
+    cursor: pointer;
+
+    &:disabled {
+      display: none;
+    }
+  }
+
+  .cell:first-child+div+div+div,
+  .cell:first-child+div+div+div+div+div+div,
+  .cell:first-child+div+div+div+div+div+div+div+div+div {
+    clear: left
+  }
+
+}
+
+// Quantity buttons section
+
+.count-select {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+
+  // hide arrows
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  & option {
+    display: none;
+
+    &:checked {
+      display: block;
+    }
+  }
+}
+
+// Dropdown
+
+#info-btn {
+
+  &[aria-expanded=true] .collapse-first,
+  &[aria-expanded=false] .collapse-second {
+    display: none;
+  }
+
+  &[aria-expanded=true] .info-text {
+    color: var(--color-primary);
+  }
+
+}
+
+// Recommendation Carousel
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
+}
+
+@media (max-width: 768px) {
+  .carousel-inner .carousel-item>div {
+    display: none;
+  }
+
+  .carousel-inner .carousel-item>div:first-child {
+    display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+
+  .carousel-inner .carousel-item-right.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(33.333%);
+  }
+
+  .carousel-inner .carousel-item-left.active,
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-33.333%);
+  }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left {
+  transform: translateX(0);
+}

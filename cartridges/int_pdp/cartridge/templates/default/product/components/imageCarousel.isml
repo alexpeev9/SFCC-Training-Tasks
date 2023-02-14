@@ -1,0 +1,23 @@
+<div class="col-12 col-sm-6 image-main-wrapper d-flex flex-sm-row flex-column-reverse" >
+    <isif condition="${product.images['small'].length > 1}">
+        <div class="d-flex flex-sm-column flex-row justify-content-sm-start justify-content-center align-items-start pt-sm-0 pt-2" aria-hidden="true" data-interval="0">
+            <isloop items="${product.images['small']}" var="image" status="loopStatus">
+                <li data-target="${" #"}pdpCarousel-${product.id}" data-slide-to="${loopStatus.index}"
+                    class='list-unstyled small-image-wrapper mr-2 mb-2 <isif condition="${loopStatus.index == 0}">active</isif>'>
+                    <img src="${image.url}" class='d-block img-fluid' alt="${image.alt} image number ${image.index}"
+                        itemprop="image" />
+                </li>
+            </isloop>
+        </div>
+    </isif>
+    <div id="pdpCarousel-${product.id}" class="carousel carousel-image slide" data-interval="0">
+        <div class="carousel-inner" role="listbox">
+            <isloop items="${product.images['large']}" var="image" status="loopStatus">
+                <div class='carousel-item <isif condition="${loopStatus.index == 0}">active</isif>'>
+                    <img src="${image.url}" class="d-block img-fluid" alt="${image.alt} image number ${image.index}"
+                        itemprop="image" />
+                </div>
+            </isloop>
+        </div>
+    </div>
+</div>

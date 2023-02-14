@@ -1,0 +1,13 @@
+<isif condition="${product.shortDescription.length > 100}">
+    <p id="textInfo" class="d-inline">${product.shortDescription.substring(0, 100)}<span class="collapse" id="text"
+            data-parent="#textInfo">${product.shortDescription.substring(100, product.shortDescription.length)}</span><button id="info-btn"
+            class="dropdown btn d-inline align-items-center shadow-none p-0" aria-expanded="false"
+            data-toggle="collapse" data-target="#text"><span class="collapse-first"
+                aria-hidden="true">${Resource.msg('description.dots', 'product', null)}</span>
+            <span class="collapse-first text-primary pl-1" aria-hidden="true">${Resource.msg('description.readmore', 'product', null)}</span>
+            <span class="collapse-second text-primary pl-1" aria-hidden="true">${Resource.msg('description.readless', 'product', null)}</span>
+        </button>
+    </p>
+<iselse/>
+    <p id="textInfo">${product.shortDescription}</p>
+</isif>
