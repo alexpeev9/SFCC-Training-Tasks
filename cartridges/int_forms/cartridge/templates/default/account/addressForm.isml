@@ -1,0 +1,13 @@
+<isset name="companyName" value="${pdict.addressForm.companyName.htmlValue}" scope="page" />
+<section class="pb-3 d-flex flex-sm-row flex-column justify-content-around">
+  <span id="js-privateAddress-btn" role="button">
+    <i class="pr-1 fa ${!companyName ? " fa-dot-circle-o" : "fa-circle-o"}" aria-hidden="true"></i>
+    ${Resource.msg('title.private.address', 'address', null)}
+  </span>
+  <span id="js-businessAddress-btn" role="button">
+    <i class="pr-1 fa ${companyName ? " fa-dot-circle-o" : "fa-circle-o"}" aria-hidden="true"></i>
+    ${Resource.msg('title.business.address', 'address', null)}
+  </span>
+</section>
+<isinclude template="account/components/privateAddressForm" />
+<isinclude template="account/components/businessAddressForm" />

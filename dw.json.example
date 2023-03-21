@@ -1,0 +1,7 @@
+{
+  "hostname": "{{HOST}}"
+  "username": "{{USERNAME}}",
+  "password": "{{PASSWORD}}",
+  "version": "version1",
+  "cartridgesPath": "app_storefront_base"
+}

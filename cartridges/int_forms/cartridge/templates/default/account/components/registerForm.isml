@@ -1,0 +1,45 @@
+<form action="${pdict.createAccountUrl}" class="registration js-form" id="recaptcha-form" method="POST"
+    name="${pdict.profileForm.htmlName}">
+
+    <div class="form-group row d-flex justify-content-center
+        <isif condition=" ${!!pdict.profileForm.customer.email.mandatory === true}">required</isif>">
+        <label class="form-control-label col-12" for="registration-form-email">
+            <isprint value="${pdict.profileForm.customer.email.label}" encoding="htmlcontent" />
+        </label>
+        <input type="text" class="form-control col-11" id="registration-form-email"
+            data-missing-error="${Resource.msg('error.message.required', 'forms', null)}"
+            data-pattern-mismatch="${Resource.msg('error.message.parse.email.profile.form', 'forms', null)}"
+            data-range-error="${Resource.msg('error.message.50orless', 'forms', null)}"
+            aria-describedby="form-email-error" <isprint value=${pdict.profileForm.customer.email.attributes}
+            encoding="off" />>
+        <div class="invalid-feedback col-12" id="form-email-error"></div>
+    </div>
+
+    <div class="form-group row d-flex justify-content-center align-items-center
+        <isif condition=" ${!!pdict.profileForm.login.password.mandatory === true}">required</isif>">
+        <label class="form-control-label col-12" for="registration-form-password">
+            <isprint value="${pdict.profileForm.login.password.label}" encoding="htmlcontent" />
+        </label>
+        <input type="password" class="js-password-input col-10 form-control" id="registration-form-password"
+            data-missing-error="${Resource.msg('error.message.required', 'forms', null)}"
+            data-range-error="${Resource.msg('error.message.8_255characters', 'forms', null)}"
+            aria-describedby="form-password-error" autocomplete="off" <isprint
+            value=${pdict.profileForm.login.password.attributes} encoding="off" />>
+        <i class="js-icon fa fa-eye col-1" aria-hidden="true" role="button"></i>
+        <div class="invalid-feedback col-12" id="form-password-error"></div>
+    </div>
+
+    <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
+
+    <button type="submit" class="g-recaptcha js-submit-button btn btn-block btn-primary"
+        data-sitekey="${pdict.reCaptcha.siteKey || ''}" data-callback='verifyReCaptcha' data-action='submit'
+        data-verify-url="${pdict.reCaptcha.verifyUrl || ''}">
+        ${Resource.msg('button.createaccount.registration', 'registration', null)}
+    </button>
+    <div class="privacy-policy">
+        ${Resource.msg('description.privacypolicy.registration', 'registration', null)}
+        <a href="${'#'}">
+            ${Resource.msg('link.privacypolicy.registration', 'registration', null)}
+        </a>
+    </div>
+</form>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+   <type-extension type-id="SitePreferences">
+      <custom-attribute-definitions>
+         <attribute-definition attribute-id="reCaptchaKey">
+            <display-name xml:lang="x-default">ReCapatcha Key</display-name>
+            <type>string</type>
+            <mandatory-flag>false</mandatory-flag>
+            <externally-managed-flag>false</externally-managed-flag>
+            <min-length>0</min-length>
+            <default-value>6Lf5BBclAAAAADz0tR7UEd7k1T6mXIDZRy3UnbEl</default-value>
+         </attribute-definition>
+         <attribute-definition attribute-id="reCaptchaSecret">
+            <display-name xml:lang="x-default">ReCaptcha Secret</display-name>
+            <type>string</type>
+            <mandatory-flag>false</mandatory-flag>
+            <externally-managed-flag>false</externally-managed-flag>
+            <min-length>0</min-length>
+            <default-value>6Lf5BBclAAAAAFdJ0VIxKTijVMF6ZjYgVKwlOEus</default-value>
+         </attribute-definition>
+         <attribute-definition attribute-id="reCaptchaThreshold">
+            <display-name xml:lang="x-default">ReCaptcha Threshold</display-name>
+            <type>double</type>
+            <mandatory-flag>false</mandatory-flag>
+            <externally-managed-flag>false</externally-managed-flag>
+            <default-value>0.5</default-value>
+         </attribute-definition>
+      </custom-attribute-definitions>
+      <group-definitions>
+         <attribute-group group-id="Storefront Configs">
+            <display-name xml:lang="x-default">Storefront Configurations</display-name>
+            <attribute attribute-id="listPriceDefault" />
+            <attribute attribute-id="GoogleVerificationTag" />
+            <attribute attribute-id="countryCode" />
+            <attribute attribute-id="customerServiceEmail" />
+            <attribute attribute-id="mapAPI" />
+            <attribute attribute-id="rateLimiterThreshold" />
+         </attribute-group>
+         <attribute-group group-id="custom">
+            <display-name xml:lang="x-default">custom</display-name>
+            <attribute attribute-id="reCaptchaSecret" />
+            <attribute attribute-id="reCaptchaKey" />
+         </attribute-group>
+      </group-definitions>
+   </type-extension>
+</metadata>

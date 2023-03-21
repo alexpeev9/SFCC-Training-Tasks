@@ -1,0 +1,23 @@
+<section class="js-subscribe-product-wrapper ${product.readyToOrder && !product.available ? " d-block" : "d-none"}">
+    <h3 class="col-12">${Resource.msg('info.notify.message', "product", null)}</h3>
+    <form class="js-subscribe-product-form" action="${URLUtils.url('Product-Subscribe')}" method="POST"
+        name="${pdict.subscribeForm.htmlName}" class="col-sm-3 col-12">
+        <div class="form-group
+        <isif condition=" ${!!pdict.subscribeForm.phone.mandatory === true}">required
+            </isif>">
+            <label class="form-control-label" for="registration-form-phone">
+                <isprint value="${pdict.subscribeForm.phone.label}" encoding="htmlcontent" />
+            </label>
+            <input type="tel" class="form-control" id="registration-form-phone" value="${pdict.phone}"
+                data-missing-error="${Resource.msg('error.message.required', 'forms', null)}"
+                aria-describedby="form-phone-error" <isprint value=${pdict.subscribeForm.phone.attributes}
+                encoding="off" />
+            >
+            <div class="invalid-feedback" id="form-phone-error"></div>
+        </div>
+        <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
+        <input type="hidden" name="productId" class="js-productId-input" value="${product.id}" />
+        <button type="submit" class="btn btn-primary">${Resource.msg('info.notify.button', "product", null)}</button>
+    </form>
+    <div class="js-subscribe-product-result alert text-center mt-3 mb-0"></div>
+</section>

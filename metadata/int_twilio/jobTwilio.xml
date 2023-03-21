@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jobs xmlns="http://www.demandware.com/xml/impex/jobs/2015-07-01">
+    <job job-id="demoJob" priority="0">
+        <description/>
+        <parameters/>
+        <flow>
+            <context site-id="Sites"/>
+            <step step-id="demoJob" type="custom.DemoTestJobStep" enforce-restart="false">
+                <description/>
+                <parameters/>
+            </step>
+        </flow>
+        <rules>
+            <on-running runtime-threshold="60m" enabled="false">
+                <mark-job-as-hanging/>
+            </on-running>
+        </rules>
+        <triggers>
+            <run-once enabled="false">
+                <date>2023-01-27Z</date>
+                <time>13:42:00.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="csvExportJob" priority="0">
+        <description>Export to CSV and delete</description>
+        <parameters/>
+        <flow>
+            <context site-id="Sites"/>
+            <step step-id="csvExportJob" type="custom.CsvExportModuleJob" enforce-restart="false">
+                <description>CSV Export Job</description>
+                <parameters/>
+            </step>
+        </flow>
+        <rules>
+            <on-running runtime-threshold="60m" enabled="false">
+                <mark-job-as-hanging/>
+            </on-running>
+        </rules>
+        <triggers>
+            <run-once enabled="false">
+                <date>2023-01-31Z</date>
+                <time>07:12:00.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="RebuildURLs" priority="0">
+        <description/>
+        <parameters/>
+        <split sequential="false">
+            <contexts template-ref="template_40">
+                <context site-id="RefArch"/>
+                <context site-id="RefArchGlobal"/>
+            </contexts>
+            <flow-template template-id="template_40">
+                <step step-id="RebuildURLs" type="UpdateStorefrontURLs" enforce-restart="false">
+                    <description/>
+                    <parameters/>
+                </step>
+            </flow-template>
+        </split>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2018-06-25Z</date>
+                <time>05:38:00.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="Reindex" priority="0">
+        <description/>
+        <parameters/>
+        <split sequential="false">
+            <contexts template-ref="template_45">
+                <context site-id="RefArch"/>
+                <context site-id="RefArchGlobal"/>
+            </contexts>
+            <flow-template template-id="template_45">
+                <step step-id="Reindex" type="SearchReindex" enforce-restart="false">
+                    <description/>
+                    <parameters>
+                        <parameter name="Product related search indexes">true</parameter>
+                        <parameter name="Active data search index">true</parameter>
+                        <parameter name="Content search index">true</parameter>
+                        <parameter name="Indexer Type">Full Index Rebuild</parameter>
+                    </parameters>
+                </step>
+            </flow-template>
+        </split>
+        <rules/>
+        <triggers>
+            <run-once enabled="false">
+                <date>2018-06-25Z</date>
+                <time>05:36:00.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+
+    <job job-id="reloadStock" priority="0">
+        <description/>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="NotifyUsers" type="custom.NotifyUsers" enforce-restart="false">
+                <description>Notifies users subscribe to a product when it becomes available again</description>
+                <parameters/>
+            </step>
+        </flow>
+        <rules>
+            <on-running runtime-threshold="60m" enabled="false">
+                <mark-job-as-hanging/>
+            </on-running>
+        </rules>
+        <triggers>
+            <run-recurring enabled="true">
+                <recurrence>
+                    <date-from>2023-03-13Z</date-from>
+                    <date-to>2023-04-01Z</date-to>
+                    <start-time>02:52:00.000Z</start-time>
+                    <interval>1w</interval>
+                    <day-of-week>
+                        <weekday>Saturday</weekday>
+                    </day-of-week>
+                </recurrence>
+            </run-recurring>
+        </triggers>
+    </job>
+
+</jobs>
